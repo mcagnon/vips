@@ -5,8 +5,8 @@ var async = require("async");
 
 module.exports.Repertoire = function(request, response){
     let num = request.params.num;
-    let ajout = request.body;
-    console.log(ajout);
+    
+    
 
     response.title = 'Ajouter une star';
     async.parallel ([
@@ -16,9 +16,7 @@ module.exports.Repertoire = function(request, response){
         function(callback) {
             model.getInfoOneVip(num, function(err, result) { callback(null, result) });
         },
-        function(callback) {
-            model.getInfoOneVip(num, function(err, result) { callback(null, result) });
-        },
+        
     ],
     function(err, result) {
         if (err) {
@@ -27,6 +25,13 @@ module.exports.Repertoire = function(request, response){
         }
         response.nationalite = result[0];
         response.netio = result[1];
+
+        let data = request.body.ajout;
+        console.log(data);
+        model.setVip(data, function(err, result) { if (err) {
+            console.log(err);
+            return;
+        } });
 
         response.render('ajouterVip', response); 
     }); 

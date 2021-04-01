@@ -9,7 +9,7 @@
 </head>
 
 <body class="monBody">
-    {{#if this }}
+    {{#if request.user }}
 
     <div id="container">
         <div id="header">
@@ -46,7 +46,7 @@
     <script src="/js/lightbox.js"></script>
 
 
-    {{/if}}
+    {{else}}
     <h2>Aministration</h2>
     <form action="/" method="post">
         <label for="login">Login</label>
@@ -58,6 +58,7 @@
         <input type="reset" value="Annuler">
         <input type="submit" value="Connexion">
     </form>
+    {{/if}}
 </body>
 
 </html>

@@ -25,13 +25,6 @@ app.use(session({
     saveUninitialized: true
 }));
 
-/* ces lignes permettent d'utiliser directement les variables de session dans handlebars
- UTILISATION : {{session.MaVariable}}  */
-app.use(function(request, response, next){
-    response.locals.session = request.session;
-    next();
-});
-
 app.post("/", function (request, response) { 
 
     let cryptr = new Cryptr('MaSuperCléDeChiffrementDeouF');

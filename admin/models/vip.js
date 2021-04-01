@@ -52,11 +52,19 @@ module.exports.getConnexion = function(login, password, callback) {
     });
 };
 
-module.exports.insertVip = function(ajout, callback) {
+module.exports.setVip = function(data, callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
-            let sql = 'INSERT INTO vip (NOM_VIP) VALUES (:'+ajout+');';
-            connexion.query(sql, callback);
+            connexion.query('INSERT INTO vip SET ?', data, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.updateVip = function(data, callback) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+            connexion.query('INSERT INTO vip SET ?', data, callback);
             connexion.release();
         }
     });

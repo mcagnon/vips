@@ -3,6 +3,8 @@
 
 module.exports.Index = function(request, response){
     response.title = "Bienvenue sur le site de SIXVOIX (IUT du Limousin).";
+    let login = request.body.login;
+    let password = request.body.password;
 
     response.render('home', response);
 };
