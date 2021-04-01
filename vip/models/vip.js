@@ -55,7 +55,7 @@ module.exports.getPhotoOneVip = function(num, callback) {
 module.exports.getMariageOneVip = function(num, callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
-            let sql = "SELECT NUM, VIP_NOM AS NOM, VIP_PRENOM AS PRENOM, DATE_DEBUT, DATE_FIN FROM ( SELECT VIP_VIP_NUMERO AS NUM, DATE_EVENEMENT AS DATE_DEBUT, MARIAGE_FIN AS DATE_FIN FROM MARIAGE WHERE VIP_NUMERO="+num+")t1 JOIN VIP ON VIP.VIP_NUMERO=t1.NUM UNION SELECT NUM, VIP_NOM AS NOM, VIP_PRENOM AS PRENOM, DATE_DEBUT, DATE_FIN FROM ( SELECT VIP_NUMERO AS NUM, DATE_EVENEMENT AS DATE_DEBUT, MARIAGE_FIN AS DATE_FIN FROM MARIAGE WHERE VIP_VIP_NUMERO="+num+")t1 JOIN VIP ON VIP.VIP_NUMERO=t1.NUM";
+            let sql = "SELECT NUM, VIP_NOM AS NOM, VIP_PRENOM AS PRENOM, DATE_DEBUT, DATE_FIN, LIEU FROM ( SELECT VIP_VIP_NUMERO AS NUM, DATE_EVENEMENT AS DATE_DEBUT, MARIAGE_FIN AS DATE_FIN, MARIAGE_LIEU AS LIEU FROM MARIAGE WHERE VIP_NUMERO="+num+")t1 JOIN VIP ON VIP.VIP_NUMERO=t1.NUM UNION SELECT NUM, VIP_NOM AS NOM, VIP_PRENOM AS PRENOM, DATE_DEBUT, DATE_FIN, LIEU FROM ( SELECT VIP_NUMERO AS NUM, DATE_EVENEMENT AS DATE_DEBUT, MARIAGE_FIN AS DATE_FIN, MARIAGE_LIEU AS LIEU FROM MARIAGE WHERE VIP_VIP_NUMERO="+num+")t1 JOIN VIP ON VIP.VIP_NUMERO=t1.NUM";
             connexion.query(sql, callback);
             connexion.release();
         }
@@ -105,7 +105,7 @@ module.exports.getMannequinOneVip = function(num, callback) {
 module.exports.getChanteurOneVip = function(num, callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
-            let sql = "SELECT chanteur.VIP_NUMERO, ALBUM_TITRE AS TITRE, ALBUM_DATE FROM chanteur LEFT JOIN composer ON composer.VIP_NUMERO=chanteur.VIP_NUMERO LEFT JOIN album ON album.ALBUM_NUMERO=composer.ALBUM_NUMERO WHERE chanteur.VIP_NUMERO="+num+";";
+            let sql = "SELECT chanteur.VIP_NUMERO, ALBUM_TITRE AS TITRE, ALBUM_DATE, CHANTEUR_SPECIALITE AS SPECIALITE FROM chanteur LEFT JOIN composer ON composer.VIP_NUMERO=chanteur.VIP_NUMERO LEFT JOIN album ON album.ALBUM_NUMERO=composer.ALBUM_NUMERO WHERE chanteur.VIP_NUMERO="+num+";";
             connexion.query(sql, callback);
             connexion.release();
         }

@@ -31,6 +31,8 @@
         {{#each realisateur }}
         {{#if this.TITRE}}
         <p class="titre">{{this.TITRE}}</p>
+        {{else}}
+        <p class="titre">Aucun film</p>
         {{/if}}
         {{/each}}
         {{/if}}
@@ -41,17 +43,21 @@
         {{#each acteur }}
         {{#if this.TITRE}}
         <p class="titre">{{this.TITRE}}{{#if this.ROLE }} (rôle : {{this.ROLE}}) {{/if }}</p>
+        {{else}}
+        <p class="titre">Aucun film</p>
         {{/if}}
         {{/each}}
         {{/if}}
 
         {{#if chanteur }}
-        <p><b>Profession :</b> Chanteur</p>
+        <p><b>Profession :</b> Chanteur{{#each chanteur }} ({{this.SPECIALITE}}){{/each}}</p>
         <p><b>Principal(aux) album(s) :</b></p>
         {{#each chanteur }}
         {{#if this.TITRE}}
-        <p class="titre">{{this.TITRE}}{{#if this.ALBUM_DATE}} (le {{formatDate this.ALBUM_DATE 'dddd D MMMM YYYY'}})
+        <p class="titre">{{this.TITRE}}{{#if this.ALBUM_DATE}} ({{formatDate this.ALBUM_DATE 'MMMM YYYY'}})
             {{/if}}</p>
+        {{else}}
+        <p class="titre">Aucun album</p>
         {{/if}}
         {{/each}}
         {{/if}}
@@ -61,8 +67,10 @@
         <p><b>Principal(aux) défilé(s) :</b></p>
         {{#each couturier }}
         {{#if this.LIEU}}
-        <p class="titre">À {{this.LIEU}}{{#if this.DEFILE_DATE}} (le {{formatDate this.ALBUM_DATE 'dddd D MMMM YYYY'}})
+        <p class="titre">À {{this.LIEU}}{{#if this.DEFILE_DATE}} ({{formatDate this.ALBUM_DATE 'MMMM YYYY'}})
             {{/if}}</p>
+        {{else}}
+        <p class="titre">Aucun défilé</p>
         {{/if}}
         {{/each}}
         {{/if}}
@@ -74,7 +82,9 @@
         {{#if this.NOM}}
         <p class="titre"><a href="../info/{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</a>
             {{#if this.DEFILE_DATE}}
-            à {{this.LIEU}} ({{formatDate this.DEFILE_DATE 'dddd D MMMM YYYY'}}) {{/if}}</p>
+            à {{this.LIEU}} ({{formatDate this.DEFILE_DATE 'MMMM YYYY'}}) {{/if}}</p>
+        {{else}}
+        <p class="titre">Aucun défilé</p>
         {{/if}}
         {{/each}}
         {{/if}}
@@ -85,16 +95,17 @@
         <p><b>Mariage(s) :</b></p>
         {{#each mariage }}
         <p class="titre"><a href="../info/{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</a> ({{formatDate this.DATE_DEBUT
-            'dddd D MMMM
-            YYYY'}} {{#if this.DATE_FIN}}--> {{formatDate this.DATE_FIN 'dddd D MMMM YYYY'}}{{/if}})</p>
+            'MMMM
+            YYYY'}} {{#if this.DATE_FIN}}--> {{formatDate this.DATE_FIN 'MMMM YYYY'}}{{/if}}) <b>lieu :
+            </b>{{this.LIEU}}</p>
         {{/each}}
         {{/if}}
 
         {{#if liaison }}
         <p><b>Liaison(s) :</b></p>
         {{#each liaison }}
-        <p class="titre"><a href="../info/{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</a> Date :
-            {{formatDate this.DATE_DEBUT 'dddd D MMMM YYYY'}} Motif : {{this.MOTIF}} </p>
+        <p class="titre"><a href="../info/{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</a> ({{formatDate this.DATE_DEBUT
+            'MMMM YYYY'}}) <b>raison fin liaison</b> {{this.MOTIF}} </p>
         {{/each}}
         {{/if}}
 

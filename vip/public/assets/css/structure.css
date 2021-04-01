@@ -106,6 +106,7 @@ a {
 }
 
 .container_photo,
+.container_info_photo,
 .info_photo {
   display: flex;
   flex-direction: column;
@@ -122,8 +123,17 @@ a {
   margin: 0.5%;
 }
 
-.info_photo {
+.container_info_photo {
   padding: 0 30%;
+}
+
+.info_photo {
+  align-items: center;
+}
+
+.info_photo img {
+  width: 10rem;
+  height: auto;
 }
 
 img {

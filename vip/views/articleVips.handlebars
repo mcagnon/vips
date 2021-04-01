@@ -12,6 +12,7 @@
     {{#each articles }}
     <a href="../repertoire/info/{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</a>
     <p>{{this.RESUME}}</p>
-    <p>[Ajouté le {{ formatDate this.DATE 'D MMMM YYYY'}}]</p>
+    <p>[Ajouté le {{ formatDate this.DATE 'D MMMM YYYY'}}] <a href="../repertoire/info/{{this.NUM}}">voir sa fiche</a>
+    </p>
     {{/each}}
 </div>
