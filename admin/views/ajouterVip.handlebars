@@ -1,0 +1,30 @@
+<h1>Ajouter un VIP</h1>
+
+<form action="/" method="post">
+    <label for="firstname">Prénom : </label>
+    <input type="text" id="firstname">
+
+    <label for="name">Nom :</label>
+    <input type="text" id="name">
+
+    <label for="nationality">Nationalité : </label>
+    <select name="nationality" id="nationality">
+        {{#each nationalite}}
+        <option value="{{this.NUM}}">{{this.NOM}}</option>
+        {{/each}}
+    </select>
+
+    <label for="sexe">Sexe : </label>
+    <select name="sexe" id="sexe">
+        <option value="M">Homme</option>
+        <option value="F">Femme</option>
+    </select>
+
+    <label for="birth">Date de naissance : </label>
+    <input type="date" name="birth" id="birth">
+
+    <label for="text">À propos : </label>
+    <textarea name="text" id="text" cols="30" rows="10"></textarea>
+
+    <input type="submit" value="Ajouter">
+</form>

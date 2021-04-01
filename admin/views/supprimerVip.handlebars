@@ -1,0 +1,9 @@
+<h1>Supprimer un VIP</h1>
+
+<p>Sélectionnez le VIP : </p>
+<select name="select_vip" id="select_vip">
+    {{#each vip }}
+    <option value="{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</option>
+    {{/each}}
+</select>
+<input type="submit" value="Supprimer" />

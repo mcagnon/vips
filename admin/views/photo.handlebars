@@ -1,0 +1,12 @@
+<h1>Gestion des photos</h1>
+
+<a href="../photo/ajouter">Ajouter</a>
+<a href="../photo/supprimer">Supprimer</a>
+
+<p>Sélectionnez le VIP : </p>
+<select name="select_vip" id="select_vip">
+    {{#each vip }}
+    <option value="{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</option>
+    {{/each}}
+</select>
+<input type="submit" value="Supprimer" />

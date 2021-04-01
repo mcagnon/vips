@@ -1,0 +1,17 @@
+<h1> Mettre ici l'album photo des stars </h1>
+
+<div class="photos">
+    {{#each album }}
+    <a href="../album/{{this.NUM}}"><img src="/images/vip/{{this.PHOTO}}" alt="photo_vip{{this.NUM}}" /></a>
+    {{/each}}
+</div>
+
+<div class="info_photo">
+    {{#each vip }}
+    <div>
+        <a href="../repertoire/info/{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</a>
+        <img src="/images/vip/{{this.PHOTO}}" alt="photo_vip{{this.NUM}}" />
+        <p>{{this.COMMENTAIRE}}</p>
+    </div>
+    {{/each}}
+</div>

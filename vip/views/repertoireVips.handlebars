@@ -1,0 +1,108 @@
+<h1>Informations sur les VIPs</h1>
+
+<p>Cliquez sur une lettre :</p>
+{{#each lettre }}
+<a href="../../repertoire/{{this.NOM}}">{{this.NOM}}</a>
+{{/each}}
+
+
+<div class="container">
+    {{#each lettreNom }}
+    <div class="container_photo">
+        <img src="/images/vip/{{this.PHOTO}}" alt="photo" />
+        <a href="../repertoire/info/{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</a>
+    </div>
+    {{/each}}
+</div>
+
+
+<div>
+    {{#each num }}
+    <img src="/images/vip/{{this.PHOTO}}" alt="photoVip" />
+    <div class="info_vip">
+        <p><b>Nom :</b> {{this.PRENOM}} {{this.NOM}}</p>
+        <p><b>Date de naissance :</b> {{formatDate this.NAISSANCE 'dddd D MMMM YYYY'}}</p>
+        <p><b>Nationalité :</b> {{this.NATIONALITE}}</p>
+        {{/each }}
+
+        {{#if realisateur }}
+        <p><b>Profession :</b> Réalisateur</p>
+        <p><b>Principal(aux) film(s) : </b></p>
+        {{#each realisateur }}
+        {{#if this.TITRE}}
+        <p class="titre">{{this.TITRE}}</p>
+        {{/if}}
+        {{/each}}
+        {{/if}}
+
+        {{#if acteur }}
+        <p><b>Profession :</b> Acteur</p>
+        <p><b>Principal(aux) film(s) :</b></p>
+        {{#each acteur }}
+        {{#if this.TITRE}}
+        <p class="titre">{{this.TITRE}}{{#if this.ROLE }} (rôle : {{this.ROLE}}) {{/if }}</p>
+        {{/if}}
+        {{/each}}
+        {{/if}}
+
+        {{#if chanteur }}
+        <p><b>Profession :</b> Chanteur</p>
+        <p><b>Principal(aux) album(s) :</b></p>
+        {{#each chanteur }}
+        {{#if this.TITRE}}
+        <p class="titre">{{this.TITRE}}{{#if this.ALBUM_DATE}} (le {{formatDate this.ALBUM_DATE 'dddd D MMMM YYYY'}})
+            {{/if}}</p>
+        {{/if}}
+        {{/each}}
+        {{/if}}
+
+        {{#if couturier }}
+        <p><b>Profession :</b> Couturier</p>
+        <p><b>Principal(aux) défilé(s) :</b></p>
+        {{#each couturier }}
+        {{#if this.LIEU}}
+        <p class="titre">À {{this.LIEU}}{{#if this.DEFILE_DATE}} (le {{formatDate this.ALBUM_DATE 'dddd D MMMM YYYY'}})
+            {{/if}}</p>
+        {{/if}}
+        {{/each}}
+        {{/if}}
+
+        {{#if mannequin }}
+        <p><b>Profession :</b> Mannequin</p>
+        <p><b>Principal(aux) défilé(s) :</b></p>
+        {{#each mannequin }}
+        {{#if this.NOM}}
+        <p class="titre"><a href="../info/{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</a>
+            {{#if this.DEFILE_DATE}}
+            à {{this.LIEU}} ({{formatDate this.DEFILE_DATE 'dddd D MMMM YYYY'}}) {{/if}}</p>
+        {{/if}}
+        {{/each}}
+        {{/if}}
+
+
+
+        {{#if mariage }}
+        <p><b>Mariage(s) :</b></p>
+        {{#each mariage }}
+        <p class="titre"><a href="../info/{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</a> ({{formatDate this.DATE_DEBUT
+            'dddd D MMMM
+            YYYY'}} {{#if this.DATE_FIN}}--> {{formatDate this.DATE_FIN 'dddd D MMMM YYYY'}}{{/if}})</p>
+        {{/each}}
+        {{/if}}
+
+        {{#if liaison }}
+        <p><b>Liaison(s) :</b></p>
+        {{#each liaison }}
+        <p class="titre"><a href="../info/{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</a> Date :
+            {{formatDate this.DATE_DEBUT 'dddd D MMMM YYYY'}} Motif : {{this.MOTIF}} </p>
+        {{/each}}
+        {{/if}}
+
+        {{#each num }}
+        <p class="quisuisje"><b>Qui suis-je ?</b> {{this.TEXTE}}</p>
+        {{/each}}
+    </div>
+    {{#each photo }}
+    <img src="/images/vip/{{this.PHOTO}}" alt="photos" onclick="clickImage(this)" />
+    {{/each}}
+</div>

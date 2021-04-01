@@ -1,0 +1,17 @@
+<h1>Articles sur les VIPs</h1>
+
+<p>Choississez un vip pour voir les articles le concernant</p>
+
+<div class="nom_article">
+    {{#each vip }}
+    <a href="../articles/{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</a>
+    {{/each}}
+</div>
+
+<div class="container_article">
+    {{#each articles }}
+    <a href="../repertoire/info/{{this.NUM}}">{{this.PRENOM}} {{this.NOM}}</a>
+    <p>{{this.RESUME}}</p>
+    <p>[Ajouté le {{ formatDate this.DATE 'D MMMM YYYY'}}]</p>
+    {{/each}}
+</div>
